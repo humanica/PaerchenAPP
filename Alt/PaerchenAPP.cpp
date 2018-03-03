@@ -1,5 +1,5 @@
-/*  
-Ideen: 
+/*
+Ideen:
 
 - Viele der Dinge brauchen vorbereitung am Vortag, zb kochen an einem Sonntag oder in die Disco gehen.
 Zudem muss Julia am Wochenende oft arbeiten. Das Skript sollte also bestenfalls für die Zukunft planen
@@ -7,7 +7,7 @@ können.
 - Sexaktiv sollte indirekt einfließen, es sollte keinen Tagesslot erhalten aber die Auswahl
 von zb vom Serienmarathon gegenüber der Spielhalle erhöhen
 - Vieles kann automatisiert werden (Wetterabfrage)
-- Aktive Eintragungen sollten möglich sein, zb Freitag Abend Anika 
+- Aktive Eintragungen sollten möglich sein, zb Freitag Abend Anika
 - Das ganze könnte  ich ggf für mich persönlich umbauen
 
 */
@@ -16,7 +16,7 @@ von zb vom Serienmarathon gegenüber der Spielhalle erhöhen
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "/home/humanica/Programming/Privat/PaerchenAPP/PaerchenAPP.cpp"
+#include "/home/humanica/Programming/Privat/PaerchenAPP/PaerchenAPP.h"
 
 int irand( int a, int e)
 {
