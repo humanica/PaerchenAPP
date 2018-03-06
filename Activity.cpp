@@ -3,49 +3,60 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <vector.h>
+#include <vector>
 
-activity::activity{
-  sportlich = 0;
-  wetterkritisch = 0;
-  temperaturkritisch = 0;
-  tageskritisch = 0;
-  tag = 0;
+using namespace std;
+
+activity::activity(void){
+  this->p_alive = 1;
+  this->p_aktiv = 0;
+  this->p_wetterKritisch = 0;
+  this->p_temperaturKritisch = 0;
+  this->p_tagesKritisch = 0;
+  this->p_tag = 0;
 }
 
-activity::activity(char name, int aktiv, int wetterkrtisch, int temperaturKritisch,
-                   int tagesKritisch, int tag){
+activity::activity(string name, int aktiv, int wetterkritisch,
+                   int temperaturKritisch, int tagesKritisch, int tag){
+  p_alive = 1;
   p_name=name;
-  p_aktiv=aktiv;
-  p_wetterKritisch=Wetterkritisch;
-  p_temperaturKritisch=temperaturKritisch;
-  p_temperaturKritisch=TagesKritisch;
-  p_tag=tag;
+  p_aktiv = aktiv;
+  p_wetterKritisch = wetterkritisch;
+  p_temperaturKritisch = temperaturKritisch;
+  p_temperaturKritisch = tagesKritisch;
+  p_tag = tag;
 }
 
-activity::~activity{
+activity::~activity(void){
 }
 
-activity::getname(){
+string activity::getname() const{
   return p_name;
 }
 
-getaktiv(){
+int activity::getalive(void){
+  return p_alive;
+}
+
+void activity::setalive(int alive){
+  p_alive = alive;
+}
+int activity::getaktiv(void){
   return p_wetterKritisch;
 }
 
-getwetterKritisch(){
+int activity::getwetterKritisch(void){
   return p_wetterKritisch;
 }
 
-gettemperaturKritisch(){
+int activity::gettemperaturKritisch(void){
   return p_temperaturKritisch;
 }
 
-gettagesKritisch(){
+int activity::gettagesKritisch(void){
   return p_tagesKritisch;
 }
 
-gettag(){
+int activity::gettag(void){
   return p_tag;
 }

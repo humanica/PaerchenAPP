@@ -1,5 +1,14 @@
 CC=g++
-CFLAGS= -g -Wall
+CFLAGS=-c -Wall
+LDFLAGS=
+SOURCES=main.cpp Activity.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=Paerchenfinder
 
-Activityfinder: Activityfinder.cpp
-	 	 $(CC) $(CFLAGS) -o Activityfinder Activityfinder.cpp
+all: $(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
