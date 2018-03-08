@@ -152,7 +152,7 @@ void voting(vector<activity>& Activity){
   map<string,int> lukasAbsolute;
   map<string,int> juliaRelative;
   map<string,int> juliaAbsolute;
-  map <string, int> :: iterator itr;
+  map <string, int> :: iterator itr, btr;
   int LukasVoteTmp,JuliaVoteTmp;
   int lukasGesamt = 0;
   int juliaGesamt = 0;
@@ -181,4 +181,15 @@ void voting(vector<activity>& Activity){
     absoluteVote = itr.second/lukasGesamt;
     juliaAbsolute[itr.first]=absoluteVote;
   }
+  int bestValue = 0;
+  int tmpValue = 0;
+  string bestActivity;
+  for(const auto& itr: lukasAbsolute){
+    for(const auto& btr: juliaAbsolute){
+      tmpValue = itr.second + btr.second;
+      if (tmpValue>bestValue) bestValue = tmpValue;
+      tmpString = itr.first;
+    }
+  }
+  cout << "Die beste Aktivität ist: " << tmpString << endl;
 }
