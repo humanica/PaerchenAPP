@@ -8,8 +8,6 @@ public:
   ~activity();
   std::string getname() const;
   int getaktiv();
-  int getalive();
-  void setalive(int);
   int getwetterKritisch();
   int gettemperaturKritisch();
   int gettagesKritisch();

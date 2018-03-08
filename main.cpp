@@ -3,24 +3,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <map>
 #include <time.h>
+#include <string>
 #include "Activity.h"
+#include <iterator>
 
-using namespace std;  int aktiv;
+using namespace std;
 
 void printActivity(vector<activity>&);
 void initActivity(vector<activity>&);
-vector<activity> filterActivity(vector<activity>&, int, int, int, int, int, int);
+void filterActivity(vector<activity>&);
 void voting(vector<activity>&);
 
-int main(int argc, char *argv[]) {
+int aktiv = 0;
+int sonnig = 0;
+int warm = 0;
+int heute = 0;
+int sonntag = 0;
+int tage = 0;
 
-  int aktiv;
-  int sonnig;
-  int warm;
-  int heute;
-  int sonntag;
-  int tage;
+int main(int argc, char *argv[]) {
 
   printf("Aktiv? \n");
   scanf("%d",&aktiv);
@@ -37,19 +40,20 @@ int main(int argc, char *argv[]) {
 
   vector<activity> Activity;
   initActivity(Activity);
-  filterActivity(Activity, aktiv, sonnig, warm, heute, sonntag, tage);
+  filterActivity(Activity);
   printActivity(Activity);
   voting(Activity);
 }
 
-void filterActivity(vector<activity>& Activity, int vaktiv, int vsonnig, int vwarm,
-                    int vheute,int vsonntag, int vtage){
+void filterActivity(vector<activity>& Activity){
+  vector<activity> Aktive;
   unsigned int i=0;
   for (i=0;i<Activity.size();i++){
-    if((vaktiv==1)&&(Activity[i].getaktiv()==0))Activity[i].setalive(0);
-    if((Activity[i].gettagesKritisch()==1)&&(vtage==1))Activity[i].setalive(0);
-    if((Activity[i].gettemperaturKritisch()==1)&&(vwarm==0))Activity[i].setalive(0);
-    if((Activity[i].getwetterKritisch()==1)&&(vsonnig==0))Activity[i].setalive(0);
+    if(!(((aktiv==1)&&(Activity[i].getaktiv()==0)) &&
+        ((Activity[i].gettagesKritisch()==1)&&(tage==1)) &&
+        ((Activity[i].gettemperaturKritisch()==1)&&(warm==0)) &&
+        ((Activity[i].getwetterKritisch()==1)&&(sonnig==0))))
+    Activity.erase(Activity.begin()+i);
   }
 };
 
@@ -139,30 +143,42 @@ void initActivity(vector<activity>& Activity){
 void printActivity(vector<activity>& Activity){
   unsigned i=0;
   for (i=0;i<Activity.size();i++){
-    if(Activity[i].getalive()==1)
-    {
-        cout<<"Aktivität: "<<Activity[i].getname()<<endl;
-    };
-  }
+    cout<<"Aktivität: "<<Activity[i].getname()<<endl;
+  };
 }
 
 void voting(vector<activity>& Activity){
-/*
-Diese Funktion soll für alle aktiven Elemente ein Voting verlangen und
-alle Votings normieren. Dafür muss jeder Vote (1-10) durch die Gesamtsumme
-der abgegebenen votes einer Person subtrahiert werden. Anschließend werden für
-jede Aktivität die Votes der beiden Parteien addiert und anschließend
-kontrolliert welcher Vote am höchsten ist.
+  map<string,int> lukasRelative;
+  map<string,int> lukasAbsolute;
+  map<string,int> juliaRelative;
+  map<string,int> juliaAbsolute;
+  map <string, int> :: iterator itr;
+  int LukasVoteTmp,JuliaVoteTmp;
+  int lukasGesamt = 0;
+  int juliaGesamt = 0;
+  string tmpString="";
 
-IT highlights:
-Um durch die Vektoren zu itereieren kann alternativ zu i auch ein Iterator verwendet
-werden. Mit diesem könnte es möglich sein das entpsrechende Object das sich in
-der Stelle des Vektors befindet sofort anzusprechen.
-
-Überlegungen:
-- Es wäre schön wenn alle übrig gebliebenen Elemente in eine anderen Vektor gespeichert
-würden, so muss man das gaze nicht von vorne durchlaufen.
-*/
-
-
+  unsigned int i=0;
+  for (i=0;i<Activity.size();i++){
+    tmpString=Activity[i].getname();
+    cout << "Aktivität " << Activity[i].getname() << " Lukas vote (1-10): " << endl;
+    cin >> LukasVoteTmp;
+    lukasGesamt=LukasVoteTmp;
+    lukasRelative[Activity[i].getname()]=LukasVoteTmp;
+  };
+  for (i=0;i<Activity.size();i++){
+    cout << "Aktivität " << Activity[i].getname() << " Julia vote (1-10): " << endl;
+    cin >> JuliaVoteTmp;
+    juliaGesamt+=JuliaVoteTmp;
+    juliaRelative[Activity[i].getname()]=JuliaVoteTmp;
+  };
+  int absoluteVote;
+  for (const auto& itr: lukasRelative){
+    absoluteVote = itr.second/lukasGesamt;
+    lukasAbsolute[itr.first]=absoluteVote;
+  }
+  for (const auto& itr: juliaRelative){
+    absoluteVote = itr.second/lukasGesamt;
+    juliaAbsolute[itr.first]=absoluteVote;
+  }
 }
