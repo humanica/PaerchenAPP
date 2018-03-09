@@ -1,0 +1,37 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Abend	PaerchenAPP.h	/^char Morgen[40],Mittag[40],Abend[40];$/;"	v
+Abendonly	PaerchenAPP.h	/^    int Abendonly;$/;"	m	struct:Taetigkeiten
+Aktiv	PaerchenAPP.h	/^    int Aktiv;$/;"	m	struct:Taetigkeiten
+CC	makefile	/^CC=g++$/;"	m
+CFLAGS	makefile	/^CFLAGS=-c -Wall$/;"	m
+Eintragaktiv	PaerchenAPP.h	/^    int Eintragaktiv;$/;"	m	struct:Taetigkeiten
+Ganztaegig	PaerchenAPP.h	/^    int Ganztaegig;$/;"	m	struct:Taetigkeiten
+Mittag	PaerchenAPP.h	/^char Morgen[40],Mittag[40],Abend[40];$/;"	v
+Morgen	PaerchenAPP.h	/^char Morgen[40],Mittag[40],Abend[40];$/;"	v
+Name	PaerchenAPP.h	/^    char Name[40];$/;"	m	struct:Taetigkeiten
+Schwimmbadwetter	PaerchenAPP.h	/^    int Schwimmbadwetter;$/;"	m	struct:Taetigkeiten
+Schwimmbadwetter	PaerchenAPP.h	/^int Schwimmbadwetter;$/;"	v
+Sexlust	PaerchenAPP.h	/^int Sexlust;$/;"	v
+Sonnigwarm	PaerchenAPP.h	/^int Sonnigwarm;$/;"	v
+Speicher	PaerchenAPP.h	/^struct Taetigkeiten Speicher[100];$/;"	v	typeref:struct:Taetigkeiten
+Sportlich	PaerchenAPP.h	/^int Sportlich;$/;"	v
+Taetigkeiten	PaerchenAPP.h	/^struct Taetigkeiten$/;"	s
+Tage	PaerchenAPP.h	/^int Tage;$/;"	v
+Tageskritisch	PaerchenAPP.h	/^    int Tageskritisch;$/;"	m	struct:Taetigkeiten
+Vormittagonly	PaerchenAPP.h	/^    int Vormittagonly;$/;"	m	struct:Taetigkeiten
+Wetterkritisch	PaerchenAPP.h	/^    int Wetterkritisch;$/;"	m	struct:Taetigkeiten
+abend	PaerchenAPP.h	/^int morgen,mittag,abend;$/;"	v
+irand	PaerchenAPP.h	/^int irand( int a, int e)$/;"	f
+main	PaerchenAPP.cpp	/^int main(int argc, char *argv[]) {$/;"	f
+mittag	PaerchenAPP.h	/^int morgen,mittag,abend;$/;"	v
+morgen	PaerchenAPP.h	/^int morgen,mittag,abend;$/;"	v
+vAbfrage	PaerchenAPP.h	/^void vAbfrage()$/;"	f
+vAusgabe	PaerchenAPP.h	/^void vAusgabe()$/;"	f
+vFiltern	PaerchenAPP.h	/^void vFiltern()$/;"	f
+vInitialisierung	PaerchenAPP.h	/^void vInitialisierung()$/;"	f
+vRandom	PaerchenAPP.h	/^void vRandom()$/;"	f
